@@ -24,3 +24,12 @@ body {
 .cursor-pointer {
     cursor: pointer;
 }
+
+.error:not(input) {
+    color: rgb(223, 70, 85);
+}
+
+.error {
+    border-color: rgb(223, 70, 85);
+}
+

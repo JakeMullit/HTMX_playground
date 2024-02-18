@@ -1,18 +1,24 @@
 ﻿@model FormModel
+@{
+    var showErrors = !String.IsNullOrEmpty(Model.EmailError);
+    var errorClass = showErrors ? "error" : "";
+}
 
 <div class="form-group my-3" id="inputEmail">
     <label for="email">Email address</label>
     <input 
         name="email"
         type="email"
-        class="form-control"
+        class="form-control @errorClass"
         id="email"
         placeholder="Enter email"
-        required
         hx-put="@Url.Action("InputEmail")"
         hx-trigger="blur"
         hx-target="#inputEmail"
         hx-swap="outerHTML"
         value="@Model.Email"
     >
+    <div class="error mt-1" @errorClass">
+        @Model.EmailError
+    </div>
 </div>

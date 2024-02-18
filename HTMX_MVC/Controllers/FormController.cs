@@ -1,4 +1,5 @@
-﻿using HTMX_MVC.Controllers.ControllerUtils;
+﻿using HTMX_MVC.businessLogic;
+using HTMX_MVC.Controllers.ControllerUtils;
 using HTMX_MVC.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,8 +18,9 @@ namespace HTMX_MVC.Controllers
         {
             var model = HttpContext.GetCreateModel<FormModel>();
             model.Name = name ?? string.Empty;
-            HttpContext.SaveModel(model);
+            model.NameError = NameValidation.ValidateName(model.Name);
 
+            HttpContext.SaveModel(model);
             return PartialView(model);
         }
 
@@ -27,6 +29,7 @@ namespace HTMX_MVC.Controllers
         {
             var model = HttpContext.GetCreateModel<FormModel>();
             model.Email = email ?? string.Empty;
+            model.EmailError = EmailValidation.ValidateEmail(model.Email);
             HttpContext.SaveModel(model);
 
             return PartialView(model);
@@ -37,6 +40,7 @@ namespace HTMX_MVC.Controllers
         {
             var model = HttpContext.GetCreateModel<FormModel>();
             model.Password = password ?? string.Empty;
+            model.PasswordError = PasswordValidation.ValidatePassword(model.Password);
             HttpContext.SaveModel(model);
 
             return PartialView(model);
