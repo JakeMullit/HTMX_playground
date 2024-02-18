@@ -1,11 +1,17 @@
-﻿<div class="form-group my-3">
+﻿@model FormModel
+
+<div class="form-group my-3" id="inputName">
     <label for="name">Name</label>
     <input 
+        name="name"
         type="text"
         class="form-control"
         id="name"
         placeholder="Enter name"
         required
-        value="@Model.Name"
-    >
+        hx-put="@Url.Action("InputName")"
+        hx-trigger="blur"
+        hx-target="#inputName"
+        hx-swap="outerHTML"
+        value="@Model.Name">
 </div>

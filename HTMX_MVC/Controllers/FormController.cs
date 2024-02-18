@@ -16,7 +16,7 @@ namespace HTMX_MVC.Controllers
         public IActionResult InputName(string name)
         {
             var model = HttpContext.GetCreateModel<FormModel>();
-            model.Name = name;
+            model.Name = name ?? string.Empty;
             HttpContext.SaveModel(model);
 
             return PartialView(model);
@@ -26,7 +26,7 @@ namespace HTMX_MVC.Controllers
         public IActionResult InputEmail(string email)
         {
             var model = HttpContext.GetCreateModel<FormModel>();
-            model.Email = email;
+            model.Email = email ?? string.Empty;
             HttpContext.SaveModel(model);
 
             return PartialView(model);
@@ -36,7 +36,7 @@ namespace HTMX_MVC.Controllers
         public IActionResult InputPassword(string password)
         {
             var model = HttpContext.GetCreateModel<FormModel>();
-            model.Password = password;
+            model.Password = password ?? string.Empty;
             HttpContext.SaveModel(model);
 
             return PartialView(model);
