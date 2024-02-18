@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+<div class="col-12 col-md-6 mx-auto">
+<div class="text-center">
+    <input 
+        class="form-control" 
+        type="search"
+        name="searchQuery" 
+        placeholder="Begin Typing To Search Users..."
+        hx-get="@Url.Action("Search")"
+        hx-trigger="input changed delay:1ms, search"
+        hx-target="#search-results"
+        hx-indicator=".htmx-indicator"
+    >
+
+    <div 
+        id="loadingIndicator" 
+        style="display: none;"
+    > Loading...
+    </div>
+    <ul id="search-results"
+        class="list-group mt-3"
+    >
+    </ul>
+</div>
+</div>

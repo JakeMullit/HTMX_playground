@@ -1,0 +1,30 @@
+﻿@model SearchModel
+@using HTMX_MVC.Data
+
+@{
+    var searchQuery = Model.SearchQuery.ToLower();
+
+    var files = HTMX_MVC.Data.Filenames.GetFilenames();
+
+    IEnumerable<FileInfo> fileMatches = 
+        files.Where(file =>
+            file.Activity.ToLower().Contains(searchQuery)
+            ||
+            file.Area.ToLower().Contains(searchQuery)
+    );
+}
+
+<div class="list-group">
+    @foreach (var file in fileMatches)
+    {
+        <a 
+            href="#" 
+            class="list-group-item list-group-item-action"
+        >
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">@file.Activity</h5>
+                <small>@file.Area</small>
+            </div>
+        </a>
+    }
+</div>
