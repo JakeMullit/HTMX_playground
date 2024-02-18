@@ -11,7 +11,7 @@
                 return "Name is required";
             }
 
-            if (name == "jacob")
+            if (name.Split(" ").Contains("jacob"))
             {
                 return "Change name, there can only be one Jacob";
             }
