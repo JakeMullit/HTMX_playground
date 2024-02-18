@@ -1,7 +1,6 @@
 ﻿@model FormModel
 @{
     var showErrors = !String.IsNullOrEmpty(Model.EmailError);
-    var errorClass = showErrors ? "error" : "";
 }
 
 <div class="form-group my-3" id="inputEmail">
@@ -9,7 +8,7 @@
     <input 
         name="email"
         type="email"
-        class="form-control @errorClass"
+        class="form-control @(showErrors ? "error" : "")"
         id="email"
         placeholder="Enter email"
         hx-put="@Url.Action("InputEmail")"
@@ -18,7 +17,11 @@
         hx-swap="outerHTML"
         value="@Model.Email"
     >
-    <div class="error mt-1" @errorClass">
-        @Model.EmailError
-    </div>
+    @if(showErrors)
+    {
+        <div class="error mt-1 error">
+            @Model.EmailError
+        </div>
+    }
+    
 </div>

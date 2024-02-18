@@ -1,7 +1,6 @@
 ﻿@model FormModel
 @{
     var showErrors = !String.IsNullOrEmpty(Model.NameError);
-    var errorClass = showErrors ? "error" : "";
 }
 
 <div class="form-group my-3" id="inputName">
@@ -9,7 +8,7 @@
     <input 
         name="name"
         type="text"
-        class="form-control @errorClass"
+        class="form-control @(showErrors ? "error" : "")"
         id="name"
         placeholder="Enter name"
         hx-put="@Url.Action("InputName")"
@@ -18,7 +17,10 @@
         hx-swap="outerHTML"
         value="@Model.Name"
     >
-    <div class="error mt-1" @errorClass">
-        @Model.NameError
-    </div>
+    @if (showErrors)
+    {
+        <div class="error mt-1 error">
+            @Model.NameError
+        </div>
+    }
 </div>
