@@ -30,6 +30,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Form}/{action=Index}/{id?}");
+    pattern: "{controller=Search}/{action=Index}/{id?}");
 
 app.Run();

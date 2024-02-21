@@ -1,0 +1,25 @@
+﻿@model FormModel
+
+<div id="spinner" style="display:none;">
+    <div class="w-100 mt-5 d-flex justify-content-center align-items-center">
+        <div class="spinner"></div>
+    </div>
+</div>
+
+<form id="contact-form">
+        @Html.Partial("~/Views/Form/InputName.cshtml", Model)
+        @Html.Partial("~/Views/Form/InputEmail.cshtml", Model)
+        @Html.Partial("~/Views/Form/InputPassword.cshtml", Model)
+        @Html.Partial("~/Views/Form/InputTerms.cshtml", Model)
+
+        <button type="button"
+                class="btn btn-primary"
+                hx-post="@Url.Action("ContactForm")"
+                hx-trigger="click"
+                hx-target="#contact-form"
+                hx-swap="outerHTML"
+                hx-indicator="#spinner"
+        >
+            Submit
+        </button>
+</form>

@@ -9,5 +9,8 @@
         public string Password { get; set; } = "";
         public string PasswordError { get; set; } = "";
         public bool HasAgreedToTerms { get; set; } = false;
+        public string HasAgreedToTermsError { get; set; } = "";
+
+        public bool loading { get; set; } = false;
     }
 }

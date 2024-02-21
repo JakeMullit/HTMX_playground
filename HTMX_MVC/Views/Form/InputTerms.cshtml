@@ -1,0 +1,31 @@
+﻿@model FormModel
+
+@{
+    var showErrors = !String.IsNullOrEmpty(Model.HasAgreedToTermsError);
+}
+
+
+<div class="form-group form-check my-3" id="input-terms">
+    <input type="checkbox"
+           name="acceptedTerms"
+           class="form-check-input cursor-pointer"
+           hx-put="@Url.Action("InputTerms")"
+           hx-trigger="click blur"
+           hx-target="#input-terms"
+           hx-swap="outerHTML"
+           value="@Model.HasAgreedToTerms"
+           checked="@Model.HasAgreedToTerms"
+           id="terms">
+    <label class="form-check-label cursor-pointer"
+           for="terms">
+        Accept Terms and Conditions
+    </label>
+    @if (showErrors)
+    {
+        <div class="error mt-1" style="margin-left: -1.5rem">
+            @Model.HasAgreedToTermsError
+        </div>
+    }
+    
+</div>
+
